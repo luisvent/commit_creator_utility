@@ -1,0 +1,107 @@
+{
+  "companyTitle": "name",
+  "types": [
+    {
+      "key": "fix",
+      "value": "Bug Fix"
+    },
+    {
+      "key": "feat",
+      "value": "Feature"
+    },
+    {
+      "key": "style",
+      "value": "Style"
+    },
+    {
+      "key": "refactor",
+      "value": "Refactor"
+    },
+    {
+      "key": "perf",
+      "value": "Performance"
+    },
+    {
+      "key": "test",
+      "value": "Testing"
+    },
+    {
+      "key": "docs",
+      "value": "Documentation"
+    },
+    {
+      "key": "build",
+      "value": "Compilation"
+    },
+    {
+      "key": "chore",
+      "value": "Configuration"
+    }
+  ],
+  "scopes": [
+    {
+      "key": "database",
+      "value": "database"
+    },
+    {
+      "key": "ui",
+      "value": "ui"
+    },
+    {
+      "key": "runtime",
+      "value": "runtime"
+    },
+    {
+      "key": "frontend",
+      "value": "frontend"
+    },
+    {
+      "key": "backend",
+      "value": "backend"
+    }
+  ],
+  "users": [
+    {
+      "key": "user@email.com",
+      "value" : "Username"
+    }
+  ],
+  "gitmojis": [
+    {
+      "key": "fix",
+      "value": ":bug:"
+    },
+    {
+      "key": "feat",
+      "value": ":sparkles:"
+    },
+    {
+      "key": "style",
+      "value": ":art:"
+    },
+    {
+      "key": "refactor",
+      "value": ":recycle:"
+    },
+    {
+      "key": "perf",
+      "value": ":zap:"
+    },
+    {
+      "key": "test",
+      "value": ":white_check_mark:"
+    },
+    {
+      "key": "docs",
+      "value": ":memo:"
+    },
+    {
+      "key": "build",
+      "value": ":construction_worker:"
+    },
+    {
+      "key": "chore",
+      "value": ":package:"
+    }
+  ]
+}

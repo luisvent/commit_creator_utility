@@ -1,0 +1,7 @@
+Target dependency graph (3 targets)
+FlutterMacOS in Pods, no dependencies
+macos_ui in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+Pods-Runner in Pods, depends on:
+FlutterMacOS in Pods (explicit)
+macos_ui in Pods (explicit)
