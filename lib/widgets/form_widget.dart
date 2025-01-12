@@ -151,133 +151,103 @@ class _CCFormState extends State<CCForm> {
 
         return Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: FormLabel(label: 'Title'),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    flex: 5,
-                    child: FormTextField(
-                      inputFormatters: [FilteringTextInputFormatter(RegExp(r'.*'), allow: true)],
-                      onChangeCallback: generateCommit,
-                      placeholder: 'Brief Description',
-                      controller: _titleController,
+          child: SingleChildScrollView( // Make the content scrollable
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start, // Align to avoid unintentional overflow
+              children: [
+                Row(
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: FormLabel(label: 'Title'),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: FormLabel(label: 'Type'),
-                  ),
-                  const SizedBox(width: 10),
-                  FormDropdown(types, setTypeValue),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: FormLabel(label: 'Scope'),
-                  ),
-                  const SizedBox(width: 10),
-                  FormDropdown(scopes, setScopeValue),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: FormLabel(
-                      label: 'Description',
-                      size: 10,
+                    const SizedBox(width: 10),
+                    Expanded(
+                      flex: 5,
+                      child: FormTextField(
+                        inputFormatters: [FilteringTextInputFormatter(RegExp(r'.*'), allow: true)],
+                        onChangeCallback: generateCommit,
+                        placeholder: 'Brief Description',
+                        controller: _titleController,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    flex: 5,
-                    child: FormTextField(
-                      inputFormatters: null,
-                      onChangeCallback: generateCommit,
-                      controller: _descriptionController,
-                      height: 90,
-                      maxLines: 60,
-                      placeholder: 'Description',
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: FormLabel(label: 'Type'),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: FormLabel(label: 'Board Items #'),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    flex: 5,
-                    child: FormTextField(
-                      inputFormatters: [FilteringTextInputFormatter(RegExp(r'[0-9, ]'), allow: true)],
-                      onChangeCallback: generateCommit,
-                      controller: _bItemController,
-                      placeholder: 'Ex: 45, 2, 89',
+                    const SizedBox(width: 10),
+                    FormDropdown(types, setTypeValue),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: FormLabel(label: 'Scope'),
                     ),
-                  ),
-                ],
-              ),
-              // const SizedBox(
-              //   height: 10,
-              // ),
-              // Row(
-              //   mainAxisSize: MainAxisSize.max,
-              //   children: [
-              //     Expanded(
-              //       flex: 1,
-              //       child: FormLabel(label: 'Breaking Changes', size: 11),
-              //     ),
-              //     const SizedBox(width: 10),
-              //     Expanded(
-              //       flex: 5,
-              //       child: Row(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           CustomCheckbox(SetBreakingChange),
-              //         ],
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              ValueListenableBuilder(
+                    const SizedBox(width: 10),
+                    FormDropdown(scopes, setScopeValue),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: FormLabel(
+                        label: 'Description',
+                        size: 10,
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      flex: 5,
+                      child: FormTextField(
+                        inputFormatters: null,
+                        onChangeCallback: generateCommit,
+                        controller: _descriptionController,
+                        height: 90,
+                        maxLines: 60,
+                        placeholder: 'Description',
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: FormLabel(label: 'Board Items #'),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      flex: 5,
+                      child: FormTextField(
+                        inputFormatters: [FilteringTextInputFormatter(RegExp(r'[0-9, ]'), allow: true)],
+                        onChangeCallback: generateCommit,
+                        controller: _bItemController,
+                        placeholder: 'Ex: 45, 2, 89',
+                      ),
+                    ),
+                  ],
+                ),
+                ValueListenableBuilder(
                   valueListenable: breakingChange,
                   builder: (_, value, __) {
                     return value != false
                         ? Column(
                             children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
+                              const SizedBox(height: 10),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
@@ -302,141 +272,131 @@ class _CCFormState extends State<CCForm> {
                                     ),
                                   ),
                                 ],
-                              )
+                              ),
                             ],
                           )
                         : Column();
-                  }),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: FormLabel(
-                      label: 'System Version',
-                      size: 10,
+                  },
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: FormLabel(
+                        label: 'System Version',
+                        size: 10,
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    flex: 5,
-                    child: FormTextField(
-                      inputFormatters: [FilteringTextInputFormatter(RegExp(r'[0-9.]'), allow: true)],
-                      onChangeCallback: generateCommit,
-                      controller: _versionController,
-                      placeholder: 'Ex: 2.3.53',
+                    const SizedBox(width: 10),
+                    Expanded(
+                      flex: 5,
+                      child: FormTextField(
+                        inputFormatters: [FilteringTextInputFormatter(RegExp(r'[0-9.]'), allow: true)],
+                        onChangeCallback: generateCommit,
+                        controller: _versionController,
+                        placeholder: 'Ex: 2.3.53',
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  const Expanded(
-                    flex: 1,
-                    child: FormLabel(label: 'User'),
-                  ),
-                  const SizedBox(width: 10),
-                  FormDropdown(users, setUserValue),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Divider(
-                color: Colors.white,
-              ),
-              const FormLabel(label: 'Commit Message'),
-              const SizedBox(
-                height: 10,
-              ),
-              FormTextField(
-                inputFormatters: [FilteringTextInputFormatter(RegExp(r'.*'), allow: true)],
-                onChangeCallback: () {},
-                controller: _messageController,
-                height: 180,
-                maxLines: 40,
-                placeholder: '',
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: clearData,
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.white54,
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: FormLabel(label: 'User'),
                     ),
-                    iconSize: 18,
-                    splashRadius: 20,
-                    tooltip: 'Clear',
-                  ),
-                  ValueListenableBuilder(
-                    valueListenable: showCopyMessage,
-                    builder: (_, value, __) {
-                      return value != false
-                          ? const Text(
-                              'Copied!',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                fontSize: 12,
-                              ),
-                            )
-                          : const SizedBox();
-                    },
-                  ),
-                  IconButton(
-                    onPressed: () async {
-                      await Clipboard.setData(ClipboardData(text: _messageController.value.text));
-                      showCopyMessage.value = true;
-                      waitTask(
-                          callback: () {
-                            showCopyMessage.value = false;
-                          },
-                          seconds: 1);
-                    },
-                    icon: const Icon(
-                      Icons.copy,
-                      color: Colors.white54,
+                    const SizedBox(width: 10),
+                    FormDropdown(users, setUserValue),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                const Divider(color: Colors.white),
+                const FormLabel(label: 'Commit Message'),
+                const SizedBox(height: 10),
+                FormTextField(
+                  inputFormatters: [FilteringTextInputFormatter(RegExp(r'.*'), allow: true)],
+                  onChangeCallback: () {},
+                  controller: _messageController,
+                  height: 180,
+                  maxLines: 40,
+                  placeholder: '',
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: clearData,
+                      icon: const Icon(
+                        Icons.close,
+                        color: Colors.white54,
+                      ),
+                      iconSize: 18,
+                      splashRadius: 20,
+                      tooltip: 'Clear',
                     ),
-                    iconSize: 18,
-                    splashRadius: 20,
-                    tooltip: 'Copy',
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
-                    'Commit Creator Utility',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white12,
-                      fontSize: 9,
+                    ValueListenableBuilder(
+                      valueListenable: showCopyMessage,
+                      builder: (_, value, __) {
+                        return value != false
+                            ? const Text(
+                                'Copied!',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 12,
+                                ),
+                              )
+                            : const SizedBox();
+                      },
                     ),
-                  ),
-                  Text(
-                    'v 1.0.0',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white12,
-                      fontSize: 9,
+                    IconButton(
+                      onPressed: () async {
+                        await Clipboard.setData(ClipboardData(text: _messageController.value.text));
+                        showCopyMessage.value = true;
+                        waitTask(
+                            callback: () {
+                              showCopyMessage.value = false;
+                            },
+                            seconds: 1);
+                      },
+                      icon: const Icon(
+                        Icons.copy,
+                        color: Colors.white54,
+                      ),
+                      iconSize: 18,
+                      splashRadius: 20,
+                      tooltip: 'Copy',
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    Text(
+                      'Commit Creator Utility',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white12,
+                        fontSize: 9,
+                      ),
+                    ),
+                    Text(
+                      'v 1.0.1',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white12,
+                        fontSize: 9,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
